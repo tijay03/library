@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="row mb-3">
+  <div class="col-md-8 themed-grid-col"></div>
+  <div class="col-md-4 themed-grid-col">
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Genre</th>
+      <th>Title</th>
+      <th>Author</th>
+    </tr>
+  </thead>
+  {% for book in books %}
+    <tr>
+      <td><a href="{{ url_for('book', book_id=book.id )}}">{{book.genre}}</a></td>
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+    </tr>
+
+  {% endfor%}
+  </table>
+{% endblock content %}
